@@ -32,7 +32,7 @@ void DeleteStringArray(StringArray array) {
 	free(array);
 }
 
-int AddStringArrayItem(StringArray array, const char *str) {
+errno_t AddStringArrayItem(StringArray array, const char *str) {
 	unsigned int memSpaceSize;
 	int length;
 	char *newStr;
@@ -77,7 +77,7 @@ unsigned int GetStringArraySize(StringArray array) {
 unsigned int GetStringArrayMemSpaceSize(StringArray array) {
 	return array->memSpaceSize;
 }
-int RemoveStringArrayItem(StringArray array, const unsigned int index) {
+errno_t RemoveStringArrayItem(StringArray array, const unsigned int index) {
 	if (index >= array->size)
 		return EINVAL;
 	free(array->str[index]);
